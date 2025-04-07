@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+</head>
+<body>
+  <form id="taskForm">
+    <input type="text" id="newTask" placeholder="Enter a new task">
+    <button type="submit" id="submitBtn">Add Task</button>
+  </form>
+  <ul id="taskList"></ul>
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+let submit = document.querySelector('#submitBtn')
+
+let newTask = document.querySelector('#newTask')
+
+let taskList = document.querySelector('#taskList')
+
+let form = document.querySelector('#taskForm')
+
+submit.disabled = true
+
+
+newTask.addEventListener('input', () => {
+
+submit.disabled = !newTask.value.trim()
+
+})
+
+form.addEventListener('submit', (e) => {
+
+e.preventDefault()
+
+let task = newTask.value.trim()
+
+if (task) {
+
+let li = document.createElement('li')
+
+li.textContent = task
+
+taskList.appendChild(li)
+
+
+newTask.value = ''
+
+submit.disabled = true
+
+}
+
+})
+
+})
+
+</script>
+
+</body>
+
+</html>
